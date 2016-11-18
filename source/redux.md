@@ -15,6 +15,7 @@ If you want to use your own store, you'll need to pass in reducer and middleware
 
 ```js
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
@@ -38,7 +39,9 @@ const store = createStore(
 
 ReactDOM.render(
   <ApolloProvider store={store} client={client}>
-    <MyRootComponent />
+    <Provider store={store}>
+      <MyRootComponent />
+    </Provider>
   </ApolloProvider>,
   rootEl
 )
